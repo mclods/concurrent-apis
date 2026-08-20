@@ -1,6 +1,6 @@
-package org.mclods.producer_consumer;
+package org.mclods.producer_consumer_semaphore;
 
-public class PC {
+public class PCSemDemo {
     public static void run() {
         Q q = new Q();
 
