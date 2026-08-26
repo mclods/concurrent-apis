@@ -9,6 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mclods.utils.AssertHelper.assertContainsTimes;
 
 public class LockDemoTests {
     private final ByteArrayOutputStream testOutputStream = new ByteArrayOutputStream();
@@ -61,20 +62,5 @@ public class LockDemoTests {
                 s -> assertThat(s).contains("A has updated count to 4"),
                 s -> assertThat(s).contains("B has updated count to 4")
         );
-    }
-
-    private void assertContainsTimes(String actual, String expected, int times) {
-        assertThat(actual).contains(expected);
-
-        int count=0, idx=0;
-        while ((idx = actual.indexOf(expected, idx)) != -1) {
-            count++;
-            idx += expected.length();
-        }
-
-        assertThat(count)
-                .as("Expected '%s' to occur %d times in " +
-                        "'%s' but occurred %d times", expected, times, actual, count)
-                .isEqualTo(times);
     }
 }
